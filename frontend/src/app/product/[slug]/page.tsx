@@ -1,3 +1,4 @@
+
 import ProductDetail from "./ProductDetail";
 
 const API_URL =
@@ -26,7 +27,11 @@ type Product = {
 };
 
 type ProductsResponse = {
-  data?: Product[];
+  data?:
+    | Product[]
+    | {
+        data?: Product[];
+      };
 };
 
 async function getProducts(): Promise<Product[]> {
@@ -36,12 +41,46 @@ async function getProducts(): Promise<Product[]> {
     });
 
     if (!response.ok) {
+      console.error(
+        `Products API failed: ${response.status} ${response.statusText}`
+      );
       return [];
     }
 
     const result: ProductsResponse = await response.json();
 
-    return result?.data ?? [];
+    /*
+     * Normal Laravel API response:
+     *
+     * {
+     *   "data": [
+     *     { ...product }
+     *   ]
+     * }
+     */
+    if (Array.isArray(result.data)) {
+      return result.data;
+    }
+
+    /*
+     * Laravel paginated response:
+     *
+     * {
+     *   "data": {
+     *     "current_page": 1,
+     *     "data": [
+     *       { ...product }
+     *     ]
+     *   }
+     * }
+     */
+    if (result.data && Array.isArray(result.data.data)) {
+      return result.data.data;
+    }
+
+    console.error("Unexpected products API response:", result);
+
+    return [];
   } catch (error) {
     console.error("Products fetch error:", error);
     return [];
@@ -50,12 +89,12 @@ async function getProducts(): Promise<Product[]> {
 
 async function getProduct(slug: string): Promise<Product | null> {
   try {
-    const response = await fetch(
-      `${API_URL}/products/${encodeURIComponent(slug)}`,
-      {
-        cache: "no-store",
-      }
-    );
+          const response = await fetch(
+          `${API_URL}/products/${encodeURIComponent(slug)}`,
+          {
+            cache: "force-cache",
+          }
+        );
 
     if (!response.ok) {
       return null;
@@ -71,16 +110,22 @@ async function getProduct(slug: string): Promise<Product | null> {
 }
 
 /*
- * Required for static export.
- * Next.js uses this to know which product pages
- * should be generated during the build.
+ * Next.js uses this during the build to determine
+ * which /product/[slug] pages should be generated.
  */
 export async function generateStaticParams() {
   const products = await getProducts();
 
-  return products.map((product) => ({
-    slug: product.slug,
-  }));
+  return products
+    .filter(
+      (product) =>
+        product &&
+        typeof product.slug === "string" &&
+        product.slug.trim() !== ""
+    )
+    .map((product) => ({
+      slug: product.slug,
+    }));
 }
 
 export default async function ProductPage({
@@ -121,3 +166,4 @@ export default async function ProductPage({
 
   return <ProductDetail product={product} />;
 }
+

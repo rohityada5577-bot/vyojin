@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Script from "next/script";
 
@@ -64,7 +64,7 @@ interface AppliedCoupon {
   discount: number;
 }
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const { items, clear } = useCart();
   const { customer, token, loading: authLoading } = useAuth();
 
@@ -2014,5 +2014,24 @@ function PremiumInput({
         className="h-13 w-full rounded-2xl border border-[#ded1c2] bg-[#fffdf9] px-4 text-sm text-[#3b1714] outline-none transition placeholder:text-[#a5968e] focus:border-[#8f1239] focus:ring-4 focus:ring-[#8f1239]/10"
       />
     </div>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="flex min-h-screen items-center justify-center bg-[#fbf6ed] px-6">
+          <div className="text-center">
+            <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-[#eadfce] border-t-[#8f1239]" />
+            <p className="mt-5 text-sm font-semibold text-[#806d65]">
+              Loading checkout...
+            </p>
+          </div>
+        </main>
+      }
+    >
+      <CheckoutContent />
+    </Suspense>
   );
 }
