@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #fffaf1;
+
+  --red: #FD4640;
+  --deep-red: #E21E44;
+
+  --gold: #FEE002;
+
+  --dark: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--dark);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: #9f1239;
+  color: white;
+}
+
+.container-main {
+  width: min(1200px, calc(100% - 40px));
+  margin: auto;
+}
+
+.section-space {
+  padding: 90px 0;
+}
+
+.gold-text {
+  background: linear-gradient(
+    120deg,
+    #9f6b1f,
+    #e7c66b,
+    #a87525,
+    #f1d98b
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.premium-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 25px;
+  border-radius: 999px;
+  background: #8f1239;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.premium-button:hover {
+  background: #6f102f;
+  transform: translateY(-2px);
+}
+
+.outline-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(127, 29, 29, 0.25);
+  color: #7f1d1d;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.outline-button:hover {
+  background: #7f1d1d;
+  color: white;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes floatImage {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.float-image {
+  animation: floatImage 5s ease-in-out infinite;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease forwards;
+}
