@@ -12,11 +12,11 @@
 const RANGRIWAAZ_CONFIG = {
     API_URL:
         window.RANGRIWAAZ_CONFIG?.API_URL ||
-        "http://api.vyojin.co.in/api/v1",
+        "https://api.vyojin.co.in/api/v1",
 
     STORAGE_URL:
         window.RANGRIWAAZ_CONFIG?.STORAGE_URL ||
-        "http://api.vyojin.co.in/storage",
+        "https://api.vyojin.co.in/storage",
 
     CHECKOUT_URL:
         window.RANGRIWAAZ_CONFIG?.CHECKOUT_URL ||

@@ -25,11 +25,11 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  "http://api.vyojin.co.in/api/v1";
+  "https://api.vyojin.co.in/api/v1";
 
 const IMAGE_URL =
   process.env.NEXT_PUBLIC_STORAGE_URL ||
-  "http://api.vyojin.co.in/storage";
+  "https://api.vyojin.co.in/storage";
 
 interface Category {
   id: number;

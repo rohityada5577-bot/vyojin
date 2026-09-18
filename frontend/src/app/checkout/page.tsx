@@ -31,11 +31,11 @@ declare global {
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  "http://api.vyojin.co.in/api/v1";
+  "https://api.vyojin.co.in/api/v1";
 
   const STORAGE_URL =
   process.env.NEXT_PUBLIC_STORAGE_URL ||
-  "http://api.vyojin.co.in/storage";
+  "https://api.vyojin.co.in/storage";
 
 function getProductImage(product: any) {
   const image =

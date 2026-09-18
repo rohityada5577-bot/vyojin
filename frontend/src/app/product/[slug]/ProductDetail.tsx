@@ -21,7 +21,7 @@ import { useCart } from "@/components/CartProvider";
 import { useWishlist } from "@/components/WishlistProvider";
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://api.vyojin.co.in/api/v1";
+  process.env.NEXT_PUBLIC_API_URL || "https://api.vyojin.co.in/api/v1";
 
 function getImageUrl(image?: string | null) {
   if (!image) {

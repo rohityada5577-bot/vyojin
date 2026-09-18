@@ -10,8 +10,8 @@ import {
 import Link from "next/link";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
-const API_URL = "http://api.vyojin.co.in/api/v1";
-const IMAGE_URL = "http://api.vyojin.co.in/storage";
+const API_URL = "https://api.vyojin.co.in/api/v1";
+const IMAGE_URL = "https://api.vyojin.co.in/storage";
 
 interface Category {
   id: number;

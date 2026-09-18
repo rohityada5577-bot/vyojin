@@ -14,11 +14,11 @@ import {
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  "http://api.vyojin.co.in/api/v1";
+  "https://api.vyojin.co.in/api/v1";
 
 const STORAGE_URL =
   process.env.NEXT_PUBLIC_STORAGE_URL ||
-  "http://api.vyojin.co.in/storage";
+  "https://api.vyojin.co.in/storage";
 
 interface Category {
   id: number;
@@ -138,11 +138,11 @@ export default function EditProductPage() {
     }
 
     if (image.startsWith("/storage/")) {
-      return `http://api.vyojin.co.in${image}`;
+      return `https://api.vyojin.co.in${image}`;
     }
 
     if (image.startsWith("storage/")) {
-      return `http://api.vyojin.co.in/${image}`;
+      return `https://api.vyojin.co.in/${image}`;
     }
 
     return `${STORAGE_URL}/${image}`;

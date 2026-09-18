@@ -21,7 +21,7 @@ import TopProducts from "./TopProducts";
 import LowStockProducts from "./LowStockProducts";
 
 
-const API_URL = "http://api.vyojin.co.in/api/v1";
+const API_URL = "https://api.vyojin.co.in/api/v1";
 
 interface DashboardStats {
   total_revenue: number;

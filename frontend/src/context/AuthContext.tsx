@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  "http://api.vyojin.co.in/api/v1";
+  "https://api.vyojin.co.in/api/v1";
 
 export interface Customer {
   id: number;

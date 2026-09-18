@@ -12,7 +12,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-const API_URL = "http://api.vyojin.co.in/api/v1";
+const API_URL = "https://api.vyojin.co.in/api/v1";
 
 export default function CreateCategoryPage() {
   const router = useRouter();

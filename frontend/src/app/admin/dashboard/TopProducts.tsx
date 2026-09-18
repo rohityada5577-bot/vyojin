@@ -5,7 +5,7 @@ import { Package, TrendingUp } from "lucide-react";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  "http://api.vyojin.co.in/api/v1";
+  "https://api.vyojin.co.in/api/v1";
 
 interface Product {
   id: number;
