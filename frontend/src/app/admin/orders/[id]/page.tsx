@@ -18,7 +18,7 @@ import {
   IndianRupee,
 } from "lucide-react";
 
-const API_URL = "http://127.0.0.1:8000/api/v1";
+const API_URL = "http://api.vyojin.co.in/api/v1";
 
 interface Customer {
   id: number;
@@ -344,7 +344,7 @@ export default function AdminOrderDetailsPage() {
       return item.product.image;
     }
 
-    return `http://127.0.0.1:8000/storage/${item.product.image.replace(
+    return `http://api.vyojin.co.in/storage/${item.product.image.replace(
       /^\/+/,
       ""
     )}`;

@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 import { LockKeyhole, Mail, ShieldCheck } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-const API_URL = "http://127.0.0.1:8000/api/v1";
+const API_URL = "http://api.vyojin.co.in/api/v1";
 
 export default function AdminLoginPage() {
   const router = useRouter();

@@ -14,7 +14,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api/v1";
+  process.env.NEXT_PUBLIC_API_URL || "http://api.vyojin.co.in/api/v1";
 
 type Category = {
   id: number;
@@ -943,14 +943,14 @@ function getProductImage(product: Product) {
    * Laravel storage URL
    */
   if (image.startsWith("storage/")) {
-    return `http://127.0.0.1:8000/${image}`;
+    return `http://api.vyojin.co.in/${image}`;
   }
 
   /*
    * Relative image path
    */
   if (image.startsWith("/")) {
-    return `http://127.0.0.1:8000${image}`;
+    return `http://api.vyojin.co.in${image}`;
   }
 
   /*
@@ -963,7 +963,7 @@ function getProductImage(product: Product) {
     return image;
   }
 
-  return `http://127.0.0.1:8000/storage/${image}`;
+  return `http://api.vyojin.co.in/storage/${image}`;
 }
 
 /* =========================================================
